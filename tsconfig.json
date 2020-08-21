@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "target": "es2015",
+    "sourceMap": false
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
