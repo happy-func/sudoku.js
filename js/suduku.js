@@ -1,3 +1,4 @@
+"use strict";
 /*
 * 数独格式
 5 9 6 2 7 1 4 8 3
@@ -134,3 +135,4 @@ var Suduku = /** @class */ (function () {
     }
     return Suduku;
 }());
+export default Suduku;

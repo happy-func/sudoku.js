@@ -20,8 +20,8 @@ interface processInnerVal {
     is_set: boolean,
     value: number,
 }
-
-class Suduku {
+//@ts-ignore
+export default class Suduku {
     originalList: number[][];
     processList: processInnerVal[][];
     areaQueue: number[][] = [[0, 0], [1, 1], [2, 2], [0, 2], [2, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
@@ -138,5 +138,5 @@ class Suduku {
         }catch {
             return this.recursionGetResult();
         }
-    }
+    };
 }
