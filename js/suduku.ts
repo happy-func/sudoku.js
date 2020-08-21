@@ -25,7 +25,7 @@ class Suduku {
     originalList: number[][];
     processList: processInnerVal[][];
     areaQueue: number[][] = [[0, 0], [1, 1], [2, 2], [0, 2], [2, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
-    constructor(list: number[][]) {
+    initData = (list: number[][]) => {
         this.originalList = list;
         this.processList = this.genProcessList();
     };

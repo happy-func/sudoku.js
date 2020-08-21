@@ -11,9 +11,13 @@
 3 7 1 8 5 9 6 2 4
 * */
 var Suduku = /** @class */ (function () {
-    function Suduku(list) {
+    function Suduku() {
         var _this = this;
         this.areaQueue = [[0, 0], [1, 1], [2, 2], [0, 2], [2, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
+        this.initData = function (list) {
+            _this.originalList = list;
+            _this.processList = _this.genProcessList();
+        };
         this.genProcessList = function () {
             var processArr = [];
             for (var i = 0; i < 9; i++) {
@@ -127,9 +131,6 @@ var Suduku = /** @class */ (function () {
                 return _this.recursionGetResult();
             }
         };
-        this.originalList = list;
-        this.processList = this.genProcessList();
     }
-    ;
     return Suduku;
 }());
