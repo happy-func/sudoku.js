@@ -1,7 +1,7 @@
 import Suduku from './suduku.js';
 const suduku = new Suduku();
 ;
-const Empty = 20;
+const Empty = 30;
 let answerData;
 let storeData;
 function genRandomOTN() {
@@ -30,10 +30,11 @@ function genGame() {
     let count = 0, newArr = [];
     try {
         list.forEach(item => {
-            let tempArr = [];
+            let tempArr = [], insideCount = 0;
             item.forEach(ite => {
-                if (count < Empty && genRandomOTN() > 5) {
+                if (count < Empty && insideCount < 3 && genRandomOTN() > 5) {
                     count++;
+                    insideCount++;
                     tempArr.push(0);
                 }
                 else {
