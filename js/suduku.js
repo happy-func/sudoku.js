@@ -120,28 +120,30 @@ export default class Suduku {
         };
         this.verify = (list) => {
             this.originalList = list;
-            this.genProcessList();
+            this.processList = this.genProcessList();
             let isLeagel = true;
             let rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9], columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9], areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             try {
+                this.areaQueue.forEach(([x, y]) => {
+                    const area = this.getAreaPosition([x, y]);
+                    area.forEach(position => {
+                        if (areaList.indexOf(this.processList[position[0]][position[1]].value) === -1) {
+                            throw (new Error('区域内容不合法'));
+                        }
+                        else {
+                            areaList.splice(areaList.indexOf(this.processList[position[0]][position[1]].value), 1);
+                        }
+                    });
+                    if (areaList.length) {
+                        throw (new Error('区域内容不合法'));
+                    }
+                    areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                });
                 this.processList.forEach((item, x) => {
                     item.forEach((ite, y) => {
                         if (!ite.value) {
                             throw (new Error('内容不合法'));
                         }
-                        const area = this.getAreaPosition([x, y]);
-                        area.forEach(position => {
-                            if (areaList.indexOf(this.processList[position[0]][position[1]].value) === -1) {
-                                throw (new Error('区域内容不合法'));
-                            }
-                            else {
-                                areaList.splice(areaList.indexOf(this.processList[position[0]][position[1]].value), 1);
-                            }
-                        });
-                        if (areaList.length) {
-                            throw (new Error('区域内容不合法'));
-                        }
-                        areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                         if (rowList.indexOf(this.processList[x][y].value) === -1) {
                             throw (new Error('行内容不合法'));
                         }

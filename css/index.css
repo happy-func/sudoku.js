@@ -42,6 +42,17 @@ h1,h3{
     background-color: darkgray;
     color: #fafafa;
 }
+.line{
+    height: 2px;
+    background-color: chocolate;
+    width: 630px;
+}
+.column-line{
+    height: 70px;
+    width: 2px;
+    background-color: chocolate;
+}
+
 
 .num-area{
     display: flex;

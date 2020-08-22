@@ -1,13 +1,9 @@
 import Suduku from './suduku.js';
-
 const suduku = new Suduku();
-// @ts-ignore
-const $ = window.$;
-
 interface processInnerVal {
     is_set: boolean,
     value: number,
-}
+};
 
 /* 游戏难度 */
 const Empty: number = 20;
@@ -67,8 +63,10 @@ function reSetHtml(list: number[][]): void {
     for (let i = 0; i < 9; i++) {
         for (let x = 0; x < 9; x++) {
             if (list[i][x]) {
+                // @ts-ignore
                 $('.play-box .row').eq(i).find('.column').eq(x).addClass('disabled').text(list[i][x]).attr('title', '该值已被锁定');
             } else {
+                // @ts-ignore
                 $('.play-box .row').eq(i).find('.column').eq(x).removeClass('disabled').text(0).removeAttr('title');
             }
         }
@@ -76,19 +74,28 @@ function reSetHtml(list: number[][]): void {
 };
 
 // 点击空格添加数字
+// @ts-ignore
 $('.play-box').on('click', '.column', function () {
+    // @ts-ignore
     if (!$(this).hasClass('disabled')) {
+        // @ts-ignore
         $('.play-box .column').removeClass('checked');
+        // @ts-ignore
         $(this).addClass('checked');
     }
 });
 
 // 点击数字填入选中表格
+// @ts-ignore
 $('.num-area').on('click', '.num', function () {
+    // @ts-ignore
     const val = $(this).text();
     try {
+        // @ts-ignore
         $('.play-box .column').each(function () {
+            // @ts-ignore
             if ($(this).hasClass('checked')) {
+                // @ts-ignore
                 $(this).text(val);
                 throw (new Error('find'));
             }
@@ -99,6 +106,7 @@ $('.num-area').on('click', '.num', function () {
 });
 
 // 恢复本次数独初始状态
+// @ts-ignore
 $('#restore').on('click', function () {
     if(window.confirm('确认恢复将会将您的答案恢复至原始状态，确认恢复？')){
         reSetHtml(storeData);
@@ -106,6 +114,7 @@ $('#restore').on('click', function () {
 });
 
 // 重置游戏
+// @ts-ignore
 $('#reset').on('click', function () {
     if (window.confirm('确认重置将会重新生成数独')) {
         genGame();
@@ -113,11 +122,15 @@ $('#reset').on('click', function () {
 });
 
 // 提交数独
+// @ts-ignore
 $('#submit').on('click', function () {
     let list: number[][] = [];
+    // @ts-ignore
     $('.play-box .row').each(function () {
         let insideArr: number[] = [];
+        // @ts-ignore
         $(this).find('.column').each(function () {
+            // @ts-ignore
             insideArr.push($(this).text() * 1);
         })
         list.push(insideArr);
@@ -131,6 +144,7 @@ $('#submit').on('click', function () {
 });
 
 // 展示可行解
+// @ts-ignore
 $('#tip').on('click', function () {
     let str:string = '';
     answerData.forEach(item => {
@@ -141,12 +155,16 @@ $('#tip').on('click', function () {
         tem += '\n';
         str += tem;
     })
+    // @ts-ignore
     $('#code').html(str);
+    // @ts-ignore
     $('.shadow-box').stop().fadeIn();
 });
 
 // 关闭可行解弹窗
+// @ts-ignore
 $('.answer_area').on('click', '.close-btn', function () {
+    // @ts-ignore
     $('.shadow-box').stop().fadeOut();
 });
 

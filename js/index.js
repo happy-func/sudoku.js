@@ -1,6 +1,6 @@
 import Suduku from './suduku.js';
 const suduku = new Suduku();
-const $ = window.$;
+;
 const Empty = 20;
 let answerData;
 let storeData;
