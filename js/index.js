@@ -1,7 +1,7 @@
 import Suduku from './suduku.js';
 const suduku = new Suduku();
 const $ = window.$;
-const Empty = 25;
+const Empty = 20;
 let answerData;
 let storeData;
 function genRandomOTN() {
@@ -82,10 +82,14 @@ $('.num-area').on('click', '.num', function () {
     }
 });
 $('#restore').on('click', function () {
-    reSetHtml(storeData);
+    if (window.confirm('确认恢复将会将您的答案恢复至原始状态，确认恢复？')) {
+        reSetHtml(storeData);
+    }
 });
 $('#reset').on('click', function () {
-    genGame();
+    if (window.confirm('确认重置将会重新生成数独')) {
+        genGame();
+    }
 });
 $('#submit').on('click', function () {
     let list = [];
@@ -113,7 +117,6 @@ $('#tip').on('click', function () {
         tem += '\n';
         str += tem;
     });
-    console.log(str);
     $('#code').html(str);
     $('.shadow-box').stop().fadeIn();
 });

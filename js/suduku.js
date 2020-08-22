@@ -122,16 +122,51 @@ export default class Suduku {
             this.originalList = list;
             this.genProcessList();
             let isLeagel = true;
+            let rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9], columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9], areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             try {
                 this.processList.forEach((item, x) => {
                     item.forEach((ite, y) => {
-                        if (!ite || !this.checkArea([x, y], ite.value) || !this.checkRow(x, ite.value) || !this.checkColumn(y, ite.value)) {
+                        if (!ite.value) {
                             throw (new Error('内容不合法'));
                         }
+                        const area = this.getAreaPosition([x, y]);
+                        area.forEach(position => {
+                            if (areaList.indexOf(this.processList[position[0]][position[1]].value) === -1) {
+                                throw (new Error('区域内容不合法'));
+                            }
+                            else {
+                                areaList.splice(areaList.indexOf(this.processList[position[0]][position[1]].value), 1);
+                            }
+                        });
+                        if (areaList.length) {
+                            throw (new Error('区域内容不合法'));
+                        }
+                        areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                        if (rowList.indexOf(this.processList[x][y].value) === -1) {
+                            throw (new Error('行内容不合法'));
+                        }
+                        else {
+                            rowList.splice(rowList.indexOf(this.processList[x][y].value), 1);
+                        }
+                        if (columnList.indexOf(this.processList[y][x].value) === -1) {
+                            throw (new Error('列内容不合法'));
+                        }
+                        else {
+                            columnList.splice(columnList.indexOf(this.processList[y][x].value), 1);
+                        }
                     });
+                    if (rowList.length) {
+                        throw (new Error('行内容不合法'));
+                    }
+                    rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    if (columnList.length) {
+                        throw (new Error('列内容不合法'));
+                    }
+                    columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                 });
             }
-            catch (_a) {
+            catch (e) {
+                console.log(e);
                 isLeagel = false;
             }
             return isLeagel;
