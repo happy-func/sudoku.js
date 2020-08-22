@@ -1,6 +1,7 @@
 import Suduku from './suduku.js';
 const suduku = new Suduku();
-const Empty = 15;
+const $ = window.$;
+const Empty = 25;
 function genRandomOTN() {
     return Math.floor(Math.random() * 9) + 1;
 }
@@ -45,6 +46,35 @@ function genGame() {
 }
 ;
 function reSetHtml(list) {
+    for (let i = 0; i < 9; i++) {
+        for (let x = 0; x < 9; x++) {
+            if (list[i][x]) {
+                $('.play-box .row').eq(i).find('.column').eq(x).addClass('disabled').text(list[i][x]).attr('title', '该值已被锁定');
+            }
+            else {
+                $('.play-box .row').eq(i).find('.column').eq(x).removeClass('disabled').text(0).removeAttr('title');
+            }
+        }
+    }
 }
 ;
+$('.play-box').on('click', '.column', function () {
+    if (!$(this).hasClass('disabled')) {
+        $('.play-box .column').removeClass('checked');
+        $(this).addClass('checked');
+    }
+});
+$('.num-area').on('click', '.num', function () {
+    const val = $(this).text();
+    try {
+        $('.play-box .column').each(function () {
+            if ($(this).hasClass('checked')) {
+                $(this).text(val);
+                throw (new Error('find'));
+            }
+        });
+    }
+    catch (_a) {
+    }
+});
 genGame();
