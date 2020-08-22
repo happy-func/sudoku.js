@@ -118,5 +118,23 @@ export default class Suduku {
                 return this.recursionGetResult();
             }
         };
+        this.verify = (list) => {
+            this.originalList = list;
+            this.genProcessList();
+            let isLeagel = true;
+            try {
+                this.processList.forEach((item, x) => {
+                    item.forEach((ite, y) => {
+                        if (!ite || !this.checkArea([x, y], ite.value) || !this.checkRow(x, ite.value) || !this.checkColumn(y, ite.value)) {
+                            throw (new Error('内容不合法'));
+                        }
+                    });
+                });
+            }
+            catch (_a) {
+                isLeagel = false;
+            }
+            return isLeagel;
+        };
     }
 }

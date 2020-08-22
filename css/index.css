@@ -64,3 +64,65 @@ h1,h3{
 .num:hover{
     background-color: blue;
 }
+
+.btn-area{
+    position: absolute;
+    right: 0;
+    top: 100px;
+    text-align: center;
+}
+.btn-area .btn{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    color: blue;
+    font-size: 22px;
+    line-height: 50px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.shadow-box{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0,0,0,.6);
+    left: 0;
+    top: 0;
+    display: none;
+}
+.answer_area{
+    width: 500px;
+    height: 350px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 200px;
+    overflow: hidden;
+}
+#code{
+    height: 250px;
+    word-break: break-all;
+    white-space: pre;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    border-radius: 4px;
+    z-index: 0;
+    color: #ccc;
+    background: #2d2d2d;
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+.answer_area .close-btn{
+    text-align: center;
+    line-height: 100px;
+    color: black;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+}

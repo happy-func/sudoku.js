@@ -20,6 +20,7 @@ interface processInnerVal {
     is_set: boolean,
     value: number,
 }
+
 //@ts-ignore
 export default class Suduku {
     originalList: number[][];
@@ -125,18 +126,35 @@ export default class Suduku {
         for (let i = 0; i < 9; i++) {
             try {
                 this.getAreaData(this.areaQueue[i]);
-            }catch (e) {
-                this.processList=this.genProcessList();
+            } catch (e) {
+                this.processList = this.genProcessList();
                 return this.getResult();
             }
         }
         return this.processList;
     };
-    recursionGetResult = ():processInnerVal[][] =>{
-        try{
+    recursionGetResult = (): processInnerVal[][] => {
+        try {
             return this.getResult();
-        }catch {
+        } catch {
             return this.recursionGetResult();
         }
     };
+    verify = (list: number[][]): boolean => {
+        this.originalList = list;
+        this.genProcessList();
+        let isLeagel: boolean = true;
+        try {
+            this.processList.forEach((item, x) => {
+                item.forEach((ite, y) => {
+                    if (!ite || !this.checkArea([x, y], ite.value) || !this.checkRow(x, ite.value) || !this.checkColumn(y, ite.value)) {
+                        throw (new Error('内容不合法'));
+                    }
+                })
+            })
+        } catch {
+            isLeagel = false;
+        }
+        return isLeagel;
+    }
 }
