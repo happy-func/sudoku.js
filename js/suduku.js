@@ -108,7 +108,14 @@ export default class Suduku {
                     return this.getResult();
                 }
             }
-            return this.processList;
+            return this.processList.reduce((pre, cur) => {
+                const arr = cur.reduce((prev, curV) => {
+                    prev.push(curV.value);
+                    return prev;
+                }, []);
+                pre.push(arr);
+                return pre;
+            }, []);
         };
         this.recursionGetResult = () => {
             try {

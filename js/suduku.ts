@@ -23,13 +23,18 @@ interface processInnerVal {
 
 //@ts-ignore
 export default class Suduku {
+    /* 原始列表 */
     originalList: number[][];
+    /* 运行时列表 */
     processList: processInnerVal[][];
+    /* 数独块队列 */
     areaQueue: number[][] = [[0, 0], [1, 1], [2, 2], [0, 2], [2, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
+    /* 初始化数据 */
     initData = (list: number[][]) => {
         this.originalList = list;
         this.processList = this.genProcessList();
     };
+    /* 生成运行时列表 */
     genProcessList = (): processInnerVal[][] => {
         let processArr = [];
         for (let i = 0; i < 9; i++) {
@@ -51,6 +56,7 @@ export default class Suduku {
         }
         return processArr;
     };
+    /* 填充当前区域 */
     getAreaData = (position: number[]): void => {
         let [x, y] = position;
         x *= 3;
@@ -61,7 +67,8 @@ export default class Suduku {
                 this.processList[item[0]][item[1]].value = this.getValue(item);
             }
         })
-    }
+    };
+    /* 求值 */
     getValue = (position: number[]): number => {
         const [x, y] = position;
         let queue = [];
@@ -76,6 +83,7 @@ export default class Suduku {
         let index = Math.floor((Math.random() * queue.length));
         return queue[index];
     };
+    /* 求当前位置9宫格位置数组 */
     getAreaPosition = (position: number[]): number[][] => {
         const [x, y] = position;
         const originX = Math.floor(x / 3) * 3;
@@ -87,7 +95,8 @@ export default class Suduku {
             }
         }
         return area;
-    }
+    };
+    /* 验证行 */
     checkRow = (x: number, val: number): Boolean => {//检查行
         let bool = true;
         for (let i = 0; i < 9; i++) {
@@ -98,6 +107,7 @@ export default class Suduku {
         }
         return bool;
     };
+    /* 验证列 */
     checkColumn = (y: number, val: number): Boolean => {//检查列
         let bool = true;
         for (let i = 0; i < 9; i++) {
@@ -108,6 +118,7 @@ export default class Suduku {
         }
         return bool;
     };
+    /* 验证当前格 */
     checkArea = (position: number[], val: number): Boolean => {
         let bool = true;
         const area = this.getAreaPosition(position);
@@ -122,6 +133,7 @@ export default class Suduku {
         }
         return bool;
     };
+    /* 求解 */
     getResult = (): processInnerVal[][] => {
         for (let i = 0; i < 9; i++) {
             try {
@@ -131,8 +143,16 @@ export default class Suduku {
                 return this.getResult();
             }
         }
-        return this.processList;
+        return this.processList.reduce((pre: processInnerVal[][], cur: processInnerVal[]) => {
+            const arr = cur.reduce((prev, curV: processInnerVal) => {
+                prev.push(curV.value);
+                return prev;
+            }, [])
+            pre.push(arr);
+            return pre;
+        }, []);
     };
+    /* 递归求解（解决求解超出堆栈限制问题） */
     recursionGetResult = (): processInnerVal[][] => {
         try {
             return this.getResult();
@@ -140,6 +160,7 @@ export default class Suduku {
             return this.recursionGetResult();
         }
     };
+    /* 验证解 */
     verify = (list: number[][]): boolean => {
         this.originalList = list;
         this.processList=this.genProcessList();
@@ -194,5 +215,5 @@ export default class Suduku {
             isLeagel = false;
         }
         return isLeagel;
-    }
+    };
 }

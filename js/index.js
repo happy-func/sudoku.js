@@ -4,29 +4,22 @@ const suduku = new Suduku();
 const Empty = 30;
 let answerData;
 let storeData;
+let initArr = [];
+for (let i = 0; i < 9; i++) {
+    let innerArr = [];
+    for (let x = 0; x < 9; x++) {
+        initArr.push([i, x]);
+    }
+    initArr.push(innerArr);
+}
 function genRandomOTN() {
     return Math.floor(Math.random() * 9) + 1;
 }
 ;
 function genGame() {
     $('.loader').stop().fadeIn();
-    let initArr = [];
-    for (let i = 0; i < 9; i++) {
-        let innerArr = [];
-        for (let x = 0; x < 9; x++) {
-            initArr.push([i, x]);
-        }
-        initArr.push(innerArr);
-    }
     suduku.initData(initArr);
-    const list = suduku.recursionGetResult().reduce((pre, cur) => {
-        const arr = cur.reduce((prev, curV) => {
-            prev.push(curV.value);
-            return prev;
-        }, []);
-        pre.push(arr);
-        return pre;
-    }, []);
+    const list = suduku.recursionGetResult();
     answerData = list;
     let count = 0, newArr = [];
     try {

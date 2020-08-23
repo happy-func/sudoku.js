@@ -11,6 +11,15 @@ const Empty: number = 30;
 let answerData: number[][];
 // 数独库备份
 let storeData: number[][];
+// 数独初始化数据
+let initArr: number[][] = [];
+for (let i = 0; i < 9; i++) {
+    let innerArr: number[] = [];
+    for (let x = 0; x < 9; x++) {
+        initArr.push([i, x]);
+    }
+    initArr.push(innerArr);
+}
 
 /* 生成1-9随机数 */
 function genRandomOTN(): number {
@@ -21,23 +30,8 @@ function genRandomOTN(): number {
 function genGame(): void {
     // @ts-ignore
     $('.loader').stop().fadeIn();
-    let initArr: number[][] = [];
-    for (let i = 0; i < 9; i++) {
-        let innerArr: number[] = [];
-        for (let x = 0; x < 9; x++) {
-            initArr.push([i, x]);
-        }
-        initArr.push(innerArr);
-    }
     suduku.initData(initArr);
-    const list = suduku.recursionGetResult().reduce((pre: processInnerVal[][], cur: processInnerVal[]) => {
-        const arr = cur.reduce((prev, curV: processInnerVal) => {
-            prev.push(curV.value);
-            return prev;
-        }, [])
-        pre.push(arr);
-        return pre;
-    }, []);
+    const list = suduku.recursionGetResult();
     // @ts-ignore
     answerData = list;
     let count = 0, newArr: number[][] = [];
