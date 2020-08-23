@@ -19,6 +19,8 @@ function genRandomOTN(): number {
 
 /* 生成游戏棋盘 */
 function genGame(): void {
+    // @ts-ignore
+    $('.loader').stop().fadeIn();
     let initArr: number[][] = [];
     for (let i = 0; i < 9; i++) {
         let innerArr: number[] = [];
@@ -57,6 +59,8 @@ function genGame(): void {
     }
     storeData = newArr;
     reSetHtml(newArr);
+    // @ts-ignore
+    $('.loader').stop().fadeOut();
 };
 
 // 为棋盘添加指定数字
@@ -159,14 +163,14 @@ $('#tip').on('click', function () {
     // @ts-ignore
     $('#code').html(str);
     // @ts-ignore
-    $('.shadow-box').stop().fadeIn();
+    $('.answer-box').stop().fadeIn();
 });
 
 // 关闭可行解弹窗
 // @ts-ignore
 $('.answer_area').on('click', '.close-btn', function () {
     // @ts-ignore
-    $('.shadow-box').stop().fadeOut();
+    $('.answer-box').stop().fadeOut();
 });
 
 genGame();

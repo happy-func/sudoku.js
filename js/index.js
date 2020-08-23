@@ -9,6 +9,7 @@ function genRandomOTN() {
 }
 ;
 function genGame() {
+    $('.loader').stop().fadeIn();
     let initArr = [];
     for (let i = 0; i < 9; i++) {
         let innerArr = [];
@@ -48,6 +49,7 @@ function genGame() {
     }
     storeData = newArr;
     reSetHtml(newArr);
+    $('.loader').stop().fadeOut();
 }
 ;
 function reSetHtml(list) {
@@ -119,9 +121,9 @@ $('#tip').on('click', function () {
         str += tem;
     });
     $('#code').html(str);
-    $('.shadow-box').stop().fadeIn();
+    $('.answer-box').stop().fadeIn();
 });
 $('.answer_area').on('click', '.close-btn', function () {
-    $('.shadow-box').stop().fadeOut();
+    $('.answer-box').stop().fadeOut();
 });
 genGame();
