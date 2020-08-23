@@ -29,6 +29,7 @@
     [3, 7, 1, 8, 5, 9, 6, 2, 4]
 ]
 */
+import Suduku from './suduku.js';
 // 数独初始化数据
 let initArr: number[][] = [];
 for (let i = 0; i < 9; i++) {
