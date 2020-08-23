@@ -15,7 +15,20 @@
 >>验证答案是否合法
 
 ### 使用用例
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数独</title>
+</head>
+<body>
+ <script src="js/index.js" type="module" rel="script"></script>
+</body>
+</html>
+```
 ```ts
+//index.ts
 /* 数独格式 待解答区域填0
 [
     [5, 9, 6, 2, 7, 1, 4, 8, 3],
