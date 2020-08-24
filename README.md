@@ -1,9 +1,11 @@
 # suduku——数独
 >javascript数独算法，数独类。数独小游戏
 ## 项目预览
-<a href="https://happy-func.github.io/sudukujs/" title="数独小游戏">数独小游戏</a>
+[数独小游戏-gitee](https://happy-func.gitee.io/sudukujs"数独小游戏-gitee")
+<a href="https://happy-func.github.io/sudukujs/" title="数独小游戏">数独小游戏-github</a>
 ##  数独类
-<a href="https://github.com/happy-func/sudukujs/blob/master/js/suduku.ts" title="Suduku.ts">Suduku</a>
+<a href="https://gitee.com/happy-func/sudukujs/blob/master/js/suduku.ts" title="Suduku.ts">Suduku-gitee</a>
+<a href="https://github.com/happy-func/sudukujs/blob/master/js/suduku.ts" title="Suduku.ts">Suduku-github</a>
 ### 关键方法
 >initData
 >>初始化数据
