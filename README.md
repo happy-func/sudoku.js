@@ -52,7 +52,7 @@ let initArr: number[][] = [];
 for (let i = 0; i < 9; i++) {
     let innerArr: number[] = [];
     for (let x = 0; x < 9; x++) {
-        initArr.push([i, x]);
+        innerArr.push(0);
     }
     initArr.push(innerArr);
 }
