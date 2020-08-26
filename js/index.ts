@@ -96,7 +96,7 @@ $('.num-area').on('click', '.num', function () {
             if ($(this).hasClass('checked')) {
                 // @ts-ignore
                 $(this).text(val);
-                throw (new Error('find'));
+                throw new Error('find');
             }
         })
     } catch {

@@ -78,7 +78,7 @@ export default class Suduku {
             }
         }
         if (!queue.length) {
-            throw (new Error('不存在有效值'));
+            throw new Error('不存在有效值');
         }
         let index = Math.floor((Math.random() * queue.length));
         return queue[index];
@@ -173,40 +173,40 @@ export default class Suduku {
                 const area = this.getAreaPosition([x, y]);
                 area.forEach(position => {
                     if (areaList.indexOf(this.processList[position[0]][position[1]].value) === -1) {
-                        throw (new Error('区域内容不合法'));
+                        throw new Error('区域内容不合法');
                     } else {
                         areaList.splice(areaList.indexOf(this.processList[position[0]][position[1]].value), 1);
                     }
                 })
                 if (areaList.length) {
-                    throw (new Error('区域内容不合法'));
+                    throw new Error('区域内容不合法');
                 }
                 areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             })
             this.processList.forEach((item, x) => {
                 item.forEach((ite, y) => {
                     if (!ite.value) {
-                        throw (new Error('内容不合法'));
+                        throw new Error('内容不合法');
                     }
                     /* 检查行 */
                     if (rowList.indexOf(this.processList[x][y].value) === -1) {
-                        throw (new Error('行内容不合法'));
+                        throw new Error('行内容不合法');
                     } else {
                         rowList.splice(rowList.indexOf(this.processList[x][y].value), 1);
                     }
                     /* 检查列 */
                     if (columnList.indexOf(this.processList[y][x].value) === -1) {
-                        throw (new Error('列内容不合法'));
+                        throw new Error('列内容不合法');
                     } else {
                         columnList.splice(columnList.indexOf(this.processList[y][x].value), 1);
                     }
                 })
                 if (rowList.length) {
-                    throw (new Error('行内容不合法'));
+                    throw new Error('行内容不合法');
                 }
                 rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                 if (columnList.length) {
-                    throw (new Error('列内容不合法'));
+                    throw new Error('列内容不合法');
                 }
                 columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             })

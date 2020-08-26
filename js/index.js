@@ -70,7 +70,7 @@ $('.num-area').on('click', '.num', function () {
         $('.play-box .column').each(function () {
             if ($(this).hasClass('checked')) {
                 $(this).text(val);
-                throw (new Error('find'));
+                throw new Error('find');
             }
         });
     }
