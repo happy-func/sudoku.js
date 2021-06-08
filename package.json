@@ -26,5 +26,6 @@
   "homepage": "https://github.com/happy-func/sudoku.js#readme",
   "devDependencies": {
     "typescript": "^4.3.2"
-  }
+  },
+  "dependencies": {}
 }

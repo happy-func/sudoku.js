@@ -1,2 +1,4 @@
 .idea/
 type.js
+*.ts
+*.json
