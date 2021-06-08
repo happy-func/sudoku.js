@@ -1,11 +1,10 @@
-import LEVEL from "./level";
 import { getResult } from "./utils";
-import { genOptions, sudukuList } from "./type";
+import { genOptions, sudokuList } from "./type";
 
 /*
 * 生成数独
 * */
-const gen = ({ level, mask }: genOptions): sudukuList => {
+const gen = ({ level, mask }: genOptions): sudokuList => {
   try {
     return getResult({ level, mask });
   } catch {

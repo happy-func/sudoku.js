@@ -1,8 +1,8 @@
-import { sudukuList } from "./type";
+import { sudokuList } from "./type";
 import { getAreaPosition, getAreaQueue } from "./utils";
 
 /* 验证解 */
-const verify = (list: sudukuList): boolean => {
+const verify = (list: sudokuList): boolean => {
   let isLegal: boolean = true;
   let rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9], columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9],
     areaList = [1, 2, 3, 4, 5, 6, 7, 8, 9];

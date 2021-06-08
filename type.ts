@@ -1,6 +1,6 @@
 import LEVEL from "./level";
 
-export type sudukuList = number[][]
+export type sudokuList = number[][]
 
 export interface genOptions {
   level: LEVEL,

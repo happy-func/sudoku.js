@@ -1,8 +1,8 @@
-import { genOptions, sudukuList } from "./type";
+import { genOptions, sudokuList } from "./type";
 import LEVEL from "./level";
 
 function getOriginalList() {
-  let initArr: sudukuList = [];
+  let initArr: sudokuList = [];
   for (let i = 0; i < 9; i++) {
     let innerArr: number[] = [];
     for (let x = 0; x < 9; x++) {
@@ -24,7 +24,7 @@ function genRandomOTN(level: LEVEL): number {
 }
 
 /* 生成数独 */
-export const getResult = ({ level, mask }: genOptions): sudukuList => {
+export const getResult = ({ level, mask }: genOptions): sudokuList => {
   let processList = getOriginalList();
   const areaQueue = getAreaQueue();
   for (let i = 0; i < 9; i++) {
@@ -35,7 +35,7 @@ export const getResult = ({ level, mask }: genOptions): sudukuList => {
       return getResult({ level, mask });
     }
   }
-  const data = processList.reduce((pre: sudukuList, cur: number[]) => {
+  const data = processList.reduce((pre: sudokuList, cur: number[]) => {
     const arr = cur.reduce((prev: number[], curV: number) => {
       prev.push(curV);
       return prev;
@@ -69,7 +69,7 @@ export const getResult = ({ level, mask }: genOptions): sudukuList => {
 };
 
 /* 填充当前区域 */
-const getAreaData = ({ position, processList }: { position: number[], processList: sudukuList }): void => {
+const getAreaData = ({ position, processList }: { position: number[], processList: sudokuList }): void => {
   let [x, y] = position;
   x *= 3;
   y *= 3;
@@ -82,7 +82,7 @@ const getAreaData = ({ position, processList }: { position: number[], processLis
 };
 
 /* 求当前位置9宫格位置数组 */
-export const getAreaPosition = (position: number[]): sudukuList => {
+export const getAreaPosition = (position: number[]): sudokuList => {
   const [x, y] = position;
   const originX = Math.floor(x / 3) * 3;
   const originY = Math.floor(y / 3) * 3;
@@ -96,7 +96,7 @@ export const getAreaPosition = (position: number[]): sudukuList => {
 };
 
 /* 求值 */
-const getValue = ({ position, processList }: { position: number[]; processList: sudukuList }): number => {
+const getValue = ({ position, processList }: { position: number[]; processList: sudokuList }): number => {
   const [x, y] = position;
   let queue = [];
   for (let i = 1; i <= 9; i++) {
@@ -116,7 +116,7 @@ const getValue = ({ position, processList }: { position: number[]; processList: 
 };
 
 /* 验证行 */
-const checkRow = ({ x, val, processList }: { x: number; val: number, processList: sudukuList }): Boolean => {//检查行
+const checkRow = ({ x, val, processList }: { x: number; val: number, processList: sudokuList }): Boolean => {//检查行
   let bool = true;
   for (let i = 0; i < 9; i++) {
     if (processList[x][i] === val) {
@@ -127,7 +127,7 @@ const checkRow = ({ x, val, processList }: { x: number; val: number, processList
   return bool;
 };
 /* 验证列 */
-const checkColumn = ({ y, val, processList }: { y: number; val: number; processList: sudukuList }): Boolean => {//检查列
+const checkColumn = ({ y, val, processList }: { y: number; val: number; processList: sudokuList }): Boolean => {//检查列
   let bool = true;
   for (let i = 0; i < 9; i++) {
     if (processList[i][y] === val) {
@@ -139,7 +139,7 @@ const checkColumn = ({ y, val, processList }: { y: number; val: number; processL
 };
 
 /* 验证当前格 */
-const checkArea = ({ position, val, processList }: { position: number[]; val: number; processList: sudukuList }): Boolean => {
+const checkArea = ({ position, val, processList }: { position: number[]; val: number; processList: sudokuList }): Boolean => {
   let bool = true;
   const area = getAreaPosition(position);
   let existArr = [];
