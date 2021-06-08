@@ -16,6 +16,9 @@ function genRandomOTN(level) {
     return Math.floor(Math.random() * level) + 1;
 }
 export const getResult = ({ level, mask }) => {
+    if ([3, 6, 9].indexOf(level) === -1) {
+        throw new Error("its not a valid level, use LEVEL.HIGH LEVEL.MIDDLE LEVEL.LOW or 3 6 9");
+    }
     let processList = getOriginalList();
     const areaQueue = getAreaQueue();
     for (let i = 0; i < 9; i++) {
@@ -27,7 +30,7 @@ export const getResult = ({ level, mask }) => {
             return getResult({ level, mask });
         }
     }
-    const data = processList.reduce((pre, cur) => {
+    const list = processList.reduce((pre, cur) => {
         const arr = cur.reduce((prev, curV) => {
             prev.push(curV);
             return prev;
@@ -36,29 +39,24 @@ export const getResult = ({ level, mask }) => {
         return pre;
     }, []);
     if (mask) {
-        let count = 0;
         const Empty = Math.ceil(level / 2);
-        const newArr = [];
-        data.forEach(item => {
-            let tempArr = [], insideCount = 0;
-            for (let i = 0; i < item.length; i++) {
-                if (count < Empty && genRandomOTN(level) < Empty) {
-                    count++;
-                    insideCount++;
-                    tempArr.push(0);
+        for (let j = 0; j < level; j++) {
+            let count = 0;
+            for (let i = 0; i < level; i++) {
+                if ((list[j][i] > 0) && (count < Empty) && (genRandomOTN(level) < Empty)) {
+                    count += 1;
+                    list[j][i] = 0;
                 }
-                else {
-                    tempArr.push(item[i]);
+                else if (list[j][i] === 0) {
+                    count += 1;
                 }
-                if ((i + 1) === item.length && tempArr.filter((val) => !val).length < Empty) {
-                    i--;
+                if ((i + 1) === level && (count < Empty)) {
+                    --j;
                 }
             }
-            newArr.push(tempArr);
-        });
-        return newArr;
+        }
     }
-    return data;
+    return list;
 };
 const getAreaData = ({ position, processList }) => {
     let [x, y] = position;
