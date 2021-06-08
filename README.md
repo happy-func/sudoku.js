@@ -1,36 +1,16 @@
 # suduku——数独
 >javascript数独算法，数独类。数独小游戏
 ## 项目预览
->[数独小游戏-gitee](https://happy-func.gitee.io/sudukujs "数独小游戏-gitee")
-
-><a href="https://happy-func.github.io/sudukujs/" title="数独小游戏">数独小游戏-github</a>
-##  数独类
-><a href="https://gitee.com/happy-func/sudukujs/blob/master/js/suduku.ts" title="Suduku.ts">Suduku-gitee</a>
-
-><a href="https://github.com/happy-func/sudukujs/blob/master/js/suduku.ts" title="Suduku.ts">Suduku-github</a>
+><a href="https://happy-func.github.io/sudoku.js/" title="数独小游戏">数独小游戏</a>
 ### 关键方法
->initData
->>初始化数据
-
->recursionGetResult
->>根据已有参数生成可行解
-
+>gen
+>>生成数独
+> 
 >verify
 >>验证答案是否合法
 
 ### 使用用例
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>数独</title>
-</head>
-<body>
- <script src="js/index.js" type="module" rel="script"></script>
-</body>
-</html>
-```
+
 ```ts
 //index.ts
 /* 数独格式 待解答区域填0
@@ -46,18 +26,7 @@
     [3, 7, 1, 8, 5, 9, 6, 2, 4]
 ]
 */
-import Suduku from './suduku.js';
+import { gen, LEVEL } from 'js-sudoku';
 // 数独初始化数据
-let initArr: number[][] = [];
-for (let i = 0; i < 9; i++) {
-    let innerArr: number[] = [];
-    for (let x = 0; x < 9; x++) {
-        innerArr.push(0);
-    }
-    initArr.push(innerArr);
-}
-const suduku = new Suduku();
-suduku.initData(initArr);
-// 可行解
-const list = suduku.recursionGetResult();
+const list = gen({ level: LEVEL.HIGH, mask: false });
 ```
