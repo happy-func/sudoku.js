@@ -1,7 +1,5 @@
 # suduku——数独
->javascript数独算法，数独类。数独小游戏
-## 项目预览
-><a href="https://happy-func.github.io/sudoku.js/" title="数独小游戏">数独小游戏</a>
+>javascript typescript 数独算法，数独类。数独小游戏
 ### 关键方法
 >gen
 >>生成数独

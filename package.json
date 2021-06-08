@@ -1,6 +1,6 @@
 {
   "name": "js-sudoku",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "sudoku.js ts js npm",
   "main": "./dist/index.js",
   "scripts": {
