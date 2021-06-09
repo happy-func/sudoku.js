@@ -15,7 +15,7 @@ const getAreaQueue = () => {
 function genRandomOTN() {
     return Math.floor(Math.random() * 9) + 1;
 }
-const getResult = ({ mask, gzip }) => {
+const getResult = (opt) => {
     let processList = getOriginalList();
     const areaQueue = getAreaQueue();
     for (let i = 0; i < 9; i++) {
@@ -24,7 +24,7 @@ const getResult = ({ mask, gzip }) => {
         }
         catch (e) {
             processList = getOriginalList();
-            return getResult({ mask });
+            return getResult(opt);
         }
     }
     const list = processList.reduce((pre, cur) => {
@@ -35,7 +35,7 @@ const getResult = ({ mask, gzip }) => {
         pre.push(arr);
         return pre;
     }, []);
-    if (mask) {
+    if (opt.mask) {
         const Empty = 5;
         for (let j = 0; j < 9; j++) {
             let count = 0;
@@ -53,7 +53,7 @@ const getResult = ({ mask, gzip }) => {
             }
         }
     }
-    if (gzip) {
+    if (opt.gzip) {
         return list.map((row) => row.map((val) => val.toString()).join('.')).join(',');
     }
     return list;
@@ -134,12 +134,13 @@ const checkArea = ({ position, val, processList }) => {
     return bool;
 };
 
-const gen = ({ mask = false, gzip = false }) => {
+const gen = (opt) => {
+    const payload = { mask: !!(opt === null || opt === void 0 ? void 0 : opt.mask), gzip: !!(opt === null || opt === void 0 ? void 0 : opt.gzip) };
     try {
-        return getResult({ mask, gzip });
+        return getResult(payload);
     }
-    catch (_a) {
-        return gen({ mask, gzip });
+    catch (e) {
+        return gen(payload);
     }
 };
 
