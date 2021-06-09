@@ -1,8 +1,8 @@
 {
   "name": "js-sudoku",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "sudoku.js ts js npm",
-  "main": "./dist/index.js",
+  "main": "./dist/js-sudoku.umd.js",
   "scripts": {
     "build": "rollup -c"
   },
