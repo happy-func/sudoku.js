@@ -1,10 +1,11 @@
 {
   "name": "js-sudoku",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "sudoku.js ts js npm",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
   "repository": {
     "type": "git",

@@ -36,12 +36,25 @@ import { gen } from 'js-sudoku';
 // 数独初始化数据
 const list = gen({ gzip: false, mask: false });
 // gzip 是否压缩结果
-// mask 是否将数独区域部分数字填写为0，目前是每行5个随机位置的数字覆写为0
+// mask 是否将数独区域部分数字填写为0，目前是每行至少5个随机位置的数字覆写为0
 ```
 
 ## 关键方法
->gen
->>生成数独
->
->verify
->>验证答案是否合法
+>生成数独
+```typescript
+gen: (opt: genOptions) => sudokuList | string;
+```
+
+| 参数  | 值类型 | 描述 |
+| :--- | :---: | :--- |
+| mask | bool | 是否将结果填充0 |
+| gzip | bool | 是否返回压缩结果 |
+
+>验证答案是否合法
+```typescript
+verify: (list: sudokuList) => boolean;
+```
+
+| 参数  | 值类型 | 描述 |
+| :--- | :---: | :--- |
+| list | number[][] | 结构同gen({ mask: false }) |

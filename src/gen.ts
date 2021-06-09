@@ -4,11 +4,12 @@ import { genOptions, sudokuList } from "./type";
 /*
 * 生成数独
 * */
-const gen = ({ mask = false, gzip = false }: genOptions): sudokuList | string => {
+const gen = (opt: genOptions): sudokuList | string => {
+  const payload = { mask: !!opt?.mask, gzip: !!opt?.gzip };
   try {
-    return getResult({ mask, gzip });
-  } catch {
-    return gen({ mask, gzip });
+    return getResult(payload);
+  } catch (e) {
+    return gen(payload);
   }
 }
 

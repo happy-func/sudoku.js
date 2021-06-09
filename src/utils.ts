@@ -23,7 +23,7 @@ function genRandomOTN(): number {
 }
 
 /* 生成数独 */
-export const getResult = ({ mask, gzip }: genOptions): sudokuList | string => {
+export const getResult = (opt: genOptions): sudokuList | string => {
   let processList = getOriginalList();
   const areaQueue = getAreaQueue();
   for (let i = 0; i < 9; i++) {
@@ -31,7 +31,7 @@ export const getResult = ({ mask, gzip }: genOptions): sudokuList | string => {
       getAreaData({ position: areaQueue[i], processList });
     } catch (e) {
       processList = getOriginalList();
-      return getResult({ mask });
+      return getResult(opt);
     }
   }
   const list = processList.reduce((pre: sudokuList, cur: number[]) => {
@@ -42,7 +42,7 @@ export const getResult = ({ mask, gzip }: genOptions): sudokuList | string => {
     pre.push(arr);
     return pre;
   }, []);
-  if (mask) {
+  if (opt.mask) {
     const Empty = 5;
     for (let j = 0; j < 9; j++) {
       let count = 0;
@@ -59,8 +59,8 @@ export const getResult = ({ mask, gzip }: genOptions): sudokuList | string => {
       }
     }
   }
-  if (gzip) {
-    return list.map((row) => row.map((val) => val.toString()).join('.')).join(',')
+  if (opt.gzip) {
+    return list.map((row) => row.map((val) => val.toString()).join('.')).join(',');
   }
   return list;
 };

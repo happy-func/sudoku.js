@@ -1,4 +1,4 @@
-import { gen, verify } from "https://unpkg.com/js-sudoku@1.0.4";
+import { gen, verify } from "../esm";
 
 let answerData,
   storeData;
@@ -8,7 +8,7 @@ function genRandomOTN() {
 function genGame() {
   $('.loader').stop().fadeIn();
   const Empty = 30;
-  const list = gen()
+  const list = gen({ gzip: false, mask: false })
   answerData = list;
   let count = 0, newArr = [];
   try {

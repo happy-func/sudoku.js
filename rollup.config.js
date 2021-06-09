@@ -23,7 +23,7 @@ export default {
       format: 'esm',
     },
     {
-      file: `lib/index.cjs.js`,
+      file: `lib/index.js`,
       format: 'cjs',
     }
   ],
