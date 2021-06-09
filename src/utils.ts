@@ -1,5 +1,4 @@
 import { genOptions, sudokuList } from "./type";
-import LEVEL from "./level";
 
 function getOriginalList() {
   let initArr: sudokuList = [];
@@ -15,19 +14,16 @@ function getOriginalList() {
 
 /* 生成数独块队列 */
 export const getAreaQueue = (): number[][] => {
-  return [[0, 0], [1, 1], [2, 2], [0, 2], [2, 0], [0, 1], [1, 0], [1, 2], [2, 1]];
+  return [[0, 0], [1, 1], [0, 1], [2, 2], [0, 2], [2, 0], [1, 0], [1, 2], [2, 1]];
 }
 
 /* 生成1-9随机数 */
-function genRandomOTN(level: LEVEL): number {
-  return Math.floor(Math.random() * level) + 1;
+function genRandomOTN(): number {
+  return Math.floor(Math.random() * 9) + 1;
 }
 
 /* 生成数独 */
-export const getResult = ({ level, mask }: genOptions): sudokuList => {
-  if ([3, 6, 9].indexOf(level) === -1) {
-    throw new Error("its not a valid level, use LEVEL.HIGH LEVEL.MIDDLE LEVEL.LOW or 3 6 9");
-  }
+export const getResult = ({ mask, gzip }: genOptions): sudokuList | string => {
   let processList = getOriginalList();
   const areaQueue = getAreaQueue();
   for (let i = 0; i < 9; i++) {
@@ -35,7 +31,7 @@ export const getResult = ({ level, mask }: genOptions): sudokuList => {
       getAreaData({ position: areaQueue[i], processList });
     } catch (e) {
       processList = getOriginalList();
-      return getResult({ level, mask });
+      return getResult({ mask });
     }
   }
   const list = processList.reduce((pre: sudokuList, cur: number[]) => {
@@ -47,21 +43,24 @@ export const getResult = ({ level, mask }: genOptions): sudokuList => {
     return pre;
   }, []);
   if (mask) {
-    const Empty = Math.ceil(level / 2);
-    for (let j = 0; j < level; j++) {
+    const Empty = 5;
+    for (let j = 0; j < 9; j++) {
       let count = 0;
-      for (let i = 0; i < level; i++) {
-        if ((list[j][i] > 0) && (count < Empty) && (genRandomOTN(level) < Empty)) {
+      for (let i = 0; i < 9; i++) {
+        if ((list[j][i] > 0) && (count < Empty) && (genRandomOTN() < Empty)) {
           count += 1;
           list[j][i] = 0;
         } else if (list[j][i] === 0) {
           count += 1;
         }
-        if ((i + 1) === level && (count < Empty)) {
+        if ((i + 1) === 9 && (count < Empty)) {
           --j;
         }
       }
     }
+  }
+  if (gzip) {
+    return list.map((row) => row.map((val) => val.toString()).join('.')).join(',')
   }
   return list;
 };

@@ -1,4 +1,4 @@
-import { gen, LEVEL } from "https://unpkg.com/js-sudoku@1.0.1";
+import { gen, verify } from "https://unpkg.com/js-sudoku@1.0.4";
 
 let answerData,
   storeData;
@@ -8,7 +8,7 @@ function genRandomOTN() {
 function genGame() {
   $('.loader').stop().fadeIn();
   const Empty = 30;
-  const list = gen({ level: LEVEL.HIGH, mask: false })
+  const list = gen()
   answerData = list;
   let count = 0, newArr = [];
   try {
@@ -81,7 +81,7 @@ $('#submit').on('click', function () {
     });
     list.push(insideArr);
   });
-  if (!suduku.verify(list)) {
+  if (!verify(list)) {
     alert('提交内容不合法，请检查后重试');
     return;
   }

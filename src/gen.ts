@@ -4,11 +4,11 @@ import { genOptions, sudokuList } from "./type";
 /*
 * 生成数独
 * */
-const gen = ({ level, mask }: genOptions): sudokuList => {
+const gen = ({ mask = false, gzip = false }: genOptions): sudokuList | string => {
   try {
-    return getResult({ level, mask });
+    return getResult({ mask, gzip });
   } catch {
-    return gen({ level, mask });
+    return gen({ mask, gzip });
   }
 }
 
