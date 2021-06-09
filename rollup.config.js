@@ -8,22 +8,22 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: `dist/${packageName}.umd.js`,
+      file: `dist/index.js`,
       format: 'umd',
       name: packageName
     },
     {
-      file: `dist/${packageName}.min.js`,
+      file: `dist/index.min.js`,
       format: 'umd',
       name: packageName,
       plugins: [terser()]
     },
     {
-      file: `esm/${packageName}.js`,
+      file: `esm/index.js`,
       format: 'esm',
     },
     {
-      file: `lib/${packageName}.cjs.js`,
+      file: `lib/index.cjs.js`,
       format: 'cjs',
     }
   ],
