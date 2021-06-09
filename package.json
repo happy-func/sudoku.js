@@ -1,10 +1,10 @@
 {
   "name": "js-sudoku",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "sudoku.js ts js npm",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,12 @@
   },
   "homepage": "https://github.com/happy-func/sudoku.js#readme",
   "devDependencies": {
+    "rollup": "^2.51.1",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.2.0",
     "typescript": "^4.3.2"
   },
   "dependencies": {}

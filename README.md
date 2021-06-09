@@ -1,13 +1,19 @@
-# suduku——数独
->javascript typescript 数独算法，数独类。数独小游戏
-### 关键方法
->gen
->>生成数独
-> 
->verify
->>验证答案是否合法
+# sudoku——数独
+>javascript typescript sudoku 数独算法，数独类。数独小游戏
 
-### 使用用例
+## 支持性
+> cmd umd esm
+> 
+> package size 3kb
+
+##安装
+```shell
+npm install js-sudoku
+# or
+yarn add js-sudoku
+```
+
+## 使用用例
 
 ```ts
 //index.ts
@@ -24,7 +30,16 @@
     [3, 7, 1, 8, 5, 9, 6, 2, 4]
 ]
 */
-import { gen, LEVEL } from 'js-sudoku';
+import { gen } from 'js-sudoku';
 // 数独初始化数据
-const list = gen({ level: LEVEL.HIGH, mask: false });
+const list = gen({ gzip: false, mask: false });
+// gzip 压缩结果'5.9.6.2.7.1.4.8.3,7.1.8.6.4.3.9.5.2   .......'
+// mask 是否将数独区域部分数字填写为0，目前是每行5个随机位置的数字覆写为0
 ```
+
+## 关键方法
+>gen
+>>生成数独
+>
+>verify
+>>验证答案是否合法
