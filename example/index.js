@@ -104,5 +104,27 @@ $('.answer_area').on('click', '.close-btn', function () {
   $('.answer-box').stop().fadeOut();
 });
 $(function () {
+  let playStr = '';
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      playStr += `<div class="row">
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column-line"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column-line"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+        </div>`;
+    }
+    if (i !== 2) {
+      playStr += `<div class="line"></div>`;
+    }
+  }
+  $(".play-box").html(playStr)
   genGame();
 })
