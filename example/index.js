@@ -1,5 +1,4 @@
-import { gen, verify } from "../esm";
-
+import { gen, verify } from "https://unpkg.com/js-sudoku@1.0.7/esm"
 let answerData,
   storeData;
 function genRandomOTN() {
@@ -104,4 +103,6 @@ $('#tip').on('click', function () {
 $('.answer_area').on('click', '.close-btn', function () {
   $('.answer-box').stop().fadeOut();
 });
-genGame();
+$(function () {
+  genGame();
+})
