@@ -1,4 +1,3 @@
-import { gen, verify } from "https://unpkg.com/js-sudoku@1.0.7/esm"
 let answerData,
   storeData;
 function genRandomOTN() {
@@ -7,7 +6,7 @@ function genRandomOTN() {
 function genGame() {
   $('.loader').stop().fadeIn();
   const Empty = 30;
-  const list = gen({ gzip: false, mask: false })
+  const list = sudoku.gen({ gzip: false, mask: false })
   answerData = list;
   let count = 0, newArr = [];
   try {
@@ -80,7 +79,7 @@ $('#submit').on('click', function () {
     });
     list.push(insideArr);
   });
-  if (!verify(list)) {
+  if (!sudoku.verify(list)) {
     alert('提交内容不合法，请检查后重试');
     return;
   }
