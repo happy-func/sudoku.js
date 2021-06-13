@@ -70,15 +70,15 @@ const list = gen({ gzip: false, mask: false });
 gen: (opt: genOptions) => sudokuList | string;
 ```
 
-| 参数  | 值类型 | 描述 |
+| params  | type | description |
 | :--- | :---: | :--- |
-| mask | boolean | 是否将结果填充0 |
-| gzip | boolean | 是否返回压缩结果 |
+| mask | boolean | random position fill 0 |
+| gzip | boolean | gzip result |
 
 ```typescript
 verify: (list: sudokuList) => boolean;
 ```
 
-| 参数  | 值类型 | 描述 |
+| params  | type | description |
 | :--- | :---: | :--- |
 | list | sudokuList | none |
