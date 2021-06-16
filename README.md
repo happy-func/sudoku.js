@@ -1,11 +1,11 @@
 # sudoku——数独
-![version](https://img.shields.io/github/package-json/v/happy-func/sudoku.js/main)
-![typescript](https://img.shields.io/npm/types/js-sudoku)
-![umd](https://img.shields.io/static/v1?label=build&message=umd&color=blue) 
-![esm](https://img.shields.io/static/v1?label=build&message=esm&color=blue)
-![cmd](https://img.shields.io/static/v1?label=build&message=cmd&color=blue)
-![npm bundle size (version)](https://img.shields.io/bundlephobia/min/js-sudoku/latest)
-![GitHub Repo stars](https://img.shields.io/github/stars/happy-func/sudoku.js?style=social)
+![version](https://img.shields.io/github/package-json/v/happy-func/sudoku.js/main?style=for-the-badge)
+![typescript](https://img.shields.io/npm/types/js-sudoku?style=for-the-badge)
+![umd](https://img.shields.io/static/v1?label=build&message=umd&color=blue&style=for-the-badge)
+![esm](https://img.shields.io/static/v1?label=build&message=esm&color=blue&style=for-the-badge)
+![cmd](https://img.shields.io/static/v1?label=build&message=cmd&color=blue&style=for-the-badge)
+![npm bundle size](https://img.shields.io/bundlephobia/min/js-sudoku?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/happy-func/sudoku.js?style=for-the-badge)
 
 ## Live Demo
 [demo](https://happy-func.github.io/sudoku.js/)
