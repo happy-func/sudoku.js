@@ -1,14 +1,16 @@
 # sudoku——数独
->javascript typescript sudoku 数独
+![version](https://img.shields.io/github/package-json/v/happy-func/sudoku.js/main)
+![typescript](https://img.shields.io/npm/types/js-sudoku)
+![umd](https://img.shields.io/static/v1?label=build&message=umd&color=blue) 
+![esm](https://img.shields.io/static/v1?label=build&message=esm&color=blue)
+![cmd](https://img.shields.io/static/v1?label=build&message=cmd&color=blue)
+![npm bundle size (version)](https://img.shields.io/bundlephobia/min/js-sudoku/latest)
+![GitHub Repo stars](https://img.shields.io/github/stars/happy-func/sudoku.js?style=social)
 
-## Support
-> cmd umd esm
-
-## Size
-> 3kb
+## Live Demo
+[demo](https://happy-func.github.io/sudoku.js/)
 
 ## Usage
-
 ### In Browser
 Locally…
 ```html
