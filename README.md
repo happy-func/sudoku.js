@@ -72,7 +72,7 @@ gen: (opt: genOptions) => sudokuList | string;
 | :--- | :--- | :--- |
 | mask | boolean | random position fill 0 |
 | gzip | boolean | gzip result |
-| level | Level | mask level, working when mask |
+| level | Level | degree of difficulty working when mask |
 
 ```typescript
 verify: (list: sudokuList) => boolean;
