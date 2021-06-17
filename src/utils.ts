@@ -1,4 +1,5 @@
 import { genOptions, sudokuList } from "./type";
+import Level from "./level";
 
 function getOriginalList() {
   let initArr: sudokuList = [];
@@ -43,19 +44,18 @@ export const getResult = (opt: genOptions): sudokuList | string => {
     return pre;
   }, []);
   if (opt.mask) {
-    const Empty = 5;
+    const Empty = opt.level * 9 + 40;
+    let count = 0;
     for (let j = 0; j < 9; j++) {
-      let count = 0;
+      if (count >= Empty) break;
       for (let i = 0; i < 9; i++) {
-        if ((list[j][i] > 0) && (count < Empty) && (genRandomOTN() < Empty)) {
+        if ((list[j][i] > 0) && (genRandomOTN() < 5)) {
           count += 1;
           list[j][i] = 0;
-        } else if (list[j][i] === 0) {
-          count += 1;
         }
-        if ((i + 1) === 9 && (count < Empty)) {
-          --j;
-        }
+      }
+      if (j === 8 && (count < Empty)) {
+        j = 0;
       }
     }
   }
@@ -150,3 +150,9 @@ const checkArea = ({ position, val, processList }: { position: number[]; val: nu
   }
   return bool;
 };
+
+/* 检查level是否合法 */
+export function CheckLevel(level: Level) {
+  const l = Object.values(Level);
+  return l.includes(level);
+}
