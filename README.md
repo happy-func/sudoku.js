@@ -18,11 +18,11 @@ Locally…
 ```
 … or Directly from CDN. In which case you don't even need to install.
 ```html
-<script src="https://unpkg.com/js-sudoku@1.0.8/dist/index.js"></script>
+<script src="https://unpkg.com/js-sudoku@1.0.9/dist/index.js"></script>
 ```
 ```javascript
 // generate sudokuList to show
-const list = sudoku.gen({ gzip: false, mask: false });
+const list = sudoku.gen({ gzip: false, mask: false, level: sudoku.Level.LOW });
 // verify users result
 const isValid = sudoku.verify(list);
 ```
@@ -35,24 +35,31 @@ yarn add js-sudoku
 es model...
 
 ```ts
-import { gen } from 'js-sudoku';
-const list = gen({ gzip: false, mask: false });
+import { gen, Level } from 'js-sudoku';
+const list = gen({ gzip: false, mask: false, level: Level.LOW });
 ```
 
 ...node
 ```typescript
-const { gen } = require('js-sudoku');
-const list = gen({ gzip: false, mask: false });
+const { gen, Level } = require('js-sudoku');
+const list = gen({ gzip: false, mask: false, level: Level.LOW });
 ```
 
 ## type
 
 ```typescript
+enum Level {
+    LOW,
+    MIDDLE,
+    HIGH
+}
+
 type sudokuList = number[][];
 
 interface genOptions {
     mask?: boolean;
     gzip?: boolean;
+    level?: Level;
 }
 ```
 ## Methods
@@ -62,14 +69,15 @@ gen: (opt: genOptions) => sudokuList | string;
 ```
 
 | params  | type | description |
-| :--- | :---: | :--- |
+| :--- | :--- | :--- |
 | mask | boolean | random position fill 0 |
 | gzip | boolean | gzip result |
+| level | Level | degree of difficulty working when mask |
 
 ```typescript
 verify: (list: sudokuList) => boolean;
 ```
 
 | params  | type | description |
-| :--- | :---: | :--- |
+| :--- | :--- | :--- |
 | list | sudokuList | none |
