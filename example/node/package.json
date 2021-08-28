@@ -1,0 +1,16 @@
+{
+  "name": "node-sudoku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "happy-func",
+  "license": "MIT",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "js-sudoku": "^1.0.9"
+  }
+}
