@@ -1,12 +1,17 @@
 {
   "name": "node-sudoku",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "using js-sudoku on node",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "sudoku",
+    "node",
+    "example",
+    "js"
+  ],
   "author": "happy-func",
   "license": "MIT",
   "dependencies": {
