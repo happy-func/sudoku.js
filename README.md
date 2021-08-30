@@ -18,7 +18,7 @@ Locally…
 ```
 … or Directly from CDN. In which case you don't even need to install.
 ```html
-<script src="https://unpkg.com/js-sudoku@1.0.9/dist/index.js"></script>
+<script src="https://unpkg.com/js-sudoku@latest/dist/index.js"></script>
 ```
 ```javascript
 // generate sudokuList to show
