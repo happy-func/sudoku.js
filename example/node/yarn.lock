@@ -9,5 +9,5 @@ http@^0.0.1-security:
 
 js-sudoku@^1.0.9:
   version "1.0.9"
-  resolved "https://registry.npmjs.org/js-sudoku/-/js-sudoku-1.0.9.tgz#3f121e4f9b10f9e664c8dead84f5da5d042252a9"
-  integrity sha512-NQasNnfrMrLhmHwJmmC/zsXXvhxJeVLY7t/Aaq5MEPMMnQYtP7y39YNmJMzaD7uuWyZIKD4672FocfEpkqnIqQ==
+  resolved "https://registry.nlark.com/js-sudoku/download/js-sudoku-1.0.9.tgz#3f121e4f9b10f9e664c8dead84f5da5d042252a9"
+  integrity sha1-PxIeT5sQ+eZkyN6thPXaXQQiUqk=
