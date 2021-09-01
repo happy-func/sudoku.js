@@ -81,3 +81,6 @@ verify: (list: sudokuList) => boolean;
 | params  | type | description |
 | :--- | :--- | :--- |
 | list | sudokuList | none |
+
+## Support By
+[<img src="https://raw.githubusercontent.com/happy-func/next-official/6f30e1bb4140f195d5176a6ddc61082be8b25505/public/images/jetbrains.png" alt="Jetbrains" title="Jetbrains" width="100" />](https://www.jetbrains.com/)
