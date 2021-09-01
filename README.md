@@ -83,4 +83,4 @@ verify: (list: sudokuList) => boolean;
 | list | sudokuList | none |
 
 ## Support By
-[![Jetbrains](https://raw.githubusercontent.com/happy-func/next-official/6f30e1bb4140f195d5176a6ddc61082be8b25505/public/images/jetbrains.png)](https://www.jetbrains.com/)
+[<img src="https://raw.githubusercontent.com/happy-func/next-official/6f30e1bb4140f195d5176a6ddc61082be8b25505/public/images/jetbrains.png" alt="Jetbrains" title="Jetbrains" style="width:100px" />](https://www.jetbrains.com/)
