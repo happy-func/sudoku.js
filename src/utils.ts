@@ -106,7 +106,7 @@ const getValue = ({ position, processList }: { position: number[]; processList: 
     }
   }
   if (!queue.length) {
-    throw new Error('不存在有效值');
+    throw new Error(`value it's not valid`);
   }
   let index = Math.floor((Math.random() * queue.length));
   return queue[index];
